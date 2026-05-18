@@ -1,10 +1,10 @@
 export const MOCK_USERS = [
   {
     id: 1,
-    nome: "Yuri Jácome",
-    email: "yuri.demo@ringstrike.com",
+    nome: "Usuario",
+    email: "usuario.demo@ringstrike.com",
     phone: "85999998888",
-    mensalidade: "2026-12-20T00:00:00.000Z",
+    mensalidade: "2026-12-20",
     plano: "Mensalidade Livre",
     aulasvoucher: 8,
     isAdmin: true,
@@ -18,7 +18,7 @@ export const MOCK_USERS = [
     nome: "Amanda Lima",
     email: "amanda.demo@ringstrike.com",
     phone: "85988887777",
-    mensalidade: "2026-09-10T00:00:00.000Z",
+    mensalidade: "2026-09-10",
     plano: "Plano Manhã",
     aulasvoucher: 0,
     isAdmin: false,
@@ -29,7 +29,7 @@ export const MOCK_USERS = [
     nome: "Carlos Silva",
     email: "carlos.demo@ringstrike.com",
     phone: "85977776666",
-    mensalidade: "2026-04-10T00:00:00.000Z",
+    mensalidade: "2026-04-10",
     plano: "Pacote 5 aulas",
     aulasvoucher: 2,
     isAdmin: false,
@@ -59,7 +59,7 @@ export const MOCK_TURMAS = [
     nome: "Aulão de Sábado",
     horario: "09:00",
     tipo_data: "Data unica",
-    dia_especifico: "2026-06-06T00:00:00.000Z",
+    dia_especifico: "2036-06-06",
     dias: [],
   },
 ];
@@ -68,7 +68,7 @@ export const MOCK_CHECKINS = [
   {
     id: 1,
     user_id: 1,
-    nome: "Yuri Jácome",
+    nome: "Usuario",
     turma_id: 1,
     criado_em: "2026-05-18T09:00:00.000Z",
     checkinstatus: "Confirmado",
@@ -87,7 +87,7 @@ export const MOCK_CHECKINS = [
     nome: "Carlos Silva",
     turma_id: 3,
     criado_em: "2026-05-17T15:30:00.000Z",
-    checkinstatus: "Cancelado",
+    checkinstatus: "Solicitado",
   },
 ];
 

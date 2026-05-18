@@ -69,6 +69,11 @@ const RenderCheckins = () => {
     return checkins.filter((checkin) => checkin.turma_id === turmaId);
   };
 
+  const parseDate = (value) => {
+    const date = new Date(value);
+    return value && !isNaN(date.getTime()) ? date : null;
+  };
+
   // handlers
   const handleConfirm = async (checkinId) => {
     try {
@@ -130,7 +135,7 @@ const RenderCheckins = () => {
   const NewCheckinCard = ({ setNewCardOpen, turmaId }) => {
   
     const [selectedUserID, setSelectedUserID] = useState("");
-    const selectedUser = users.find((u) => u.id === Number(selectedUserID) );
+    const selectedUser = users.find((u) => u.id === Number(selectedUserID));
 
     
       const hoje = new Date();
@@ -141,7 +146,7 @@ const RenderCheckins = () => {
       const handleAddNewCheckin = async () => {
         const checkinData = {
           user_id: Number(selectedUserID) || "",
-          nome: selectedUser.nome || "",
+          nome: selectedUser?.nome || "",
           turma_id: turmaId,
           criado_em: HojeISO,
           checkinstatus: "Solicitado",
@@ -302,50 +307,60 @@ const RenderCheckins = () => {
               </div>
             ) : (
               <div className="checkins">
-                {filteredCheckins.map((checkin) => (
-                  <div key={checkin.id} className="checkinCard">
-                    <div className="checkinInfo">
-                      <h5 className="checkinName">
-                        Nome: <span>{checkin.nome}</span>
-                      </h5>
-                      <h5>Plano: <span>{checkin.plano? checkin.plano : "Sem plano"}</span></h5>
-                      <h5>Aulas Voucher: <span>{checkin.aulasvoucher? checkin.aulasvoucher : "Sem voucher"}</span></h5>
-                      <h5>Mensalidade: <span className={new Date(checkin.mensalidade).toISOString().split('T')[0] >= dataHoje ? "green" : ""}>{new Date(checkin.mensalidade).toLocaleDateString("pt-BR")}</span></h5>
-                      <h5 className="checkinTime">
-                        Solicitado as:
-                        <span>
-                          {new Date(checkin.criado_em).toLocaleTimeString(
-                            "pt-BR"
-                          )}
-                        </span>
-                      </h5>
-                    </div>
+                {filteredCheckins.map((checkin) => {
+                  const mensalidadeData = parseDate(checkin.mensalidade);
+                  const mensalidadeTexto = mensalidadeData
+                    ? mensalidadeData.toLocaleDateString("pt-BR")
+                    : "Sem mensalidade";
+                  const mensalidadeAtual = mensalidadeData
+                    ? mensalidadeData.toISOString().split('T')[0] >= dataHoje
+                    : false;
 
-                    <div>
-                      {checkin.checkinstatus === "Solicitado" ? (
-                        <button
-                          onClick={() => handleConfirm(checkin.id)}
-                          className="checkinButton confirm-btn"
-                          disabled={loadingCheckins[checkin.id]}
-                        >
-                          {loadingCheckins[checkin.id]
-                            ? "Confirmando"
-                            : "Confirmar"}
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => handleDelete(checkin.id)}
-                          className="checkinButton cancel-btn"
-                          disabled={loadingCheckins[checkin.id]}
-                        >
-                          {loadingCheckins[checkin.id]
-                            ? "Cancelando..."
-                            : "Cancelar"}
-                        </button>
-                      )}
+                  return (
+                    <div key={checkin.id} className="checkinCard">
+                      <div className="checkinInfo">
+                        <h5 className="checkinName">
+                          Nome: <span>{checkin.nome}</span>
+                        </h5>
+                        <h5>
+                          Plano: <span>{checkin.plano ? checkin.plano : "Sem plano"}</span>
+                        </h5>
+                        <h5>
+                          Aulas Voucher: <span>{checkin.aulasvoucher ? checkin.aulasvoucher : "Sem voucher"}</span>
+                        </h5>
+                        <h5>
+                          Mensalidade: <span className={mensalidadeAtual ? "green" : ""}>{mensalidadeTexto}</span>
+                        </h5>
+                        <h5 className="checkinTime">
+                          Solicitado as:
+                          <span>
+                            {new Date(checkin.criado_em).toLocaleTimeString("pt-BR")}
+                          </span>
+                        </h5>
+                      </div>
+
+                      <div>
+                        {checkin.checkinstatus === "Solicitado" ? (
+                          <button
+                            onClick={() => handleConfirm(checkin.id)}
+                            className="checkinButton confirm-btn"
+                            disabled={loadingCheckins[checkin.id]}
+                          >
+                            {loadingCheckins[checkin.id] ? "Confirmando" : "Confirmar"}
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleDelete(checkin.id)}
+                            className="checkinButton cancel-btn"
+                            disabled={loadingCheckins[checkin.id]}
+                          >
+                            {loadingCheckins[checkin.id] ? "Cancelando..." : "Cancelar"}
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
                 {newCardOpen && (
                   <NewCheckinCard
                     setNewCardOpen={setNewCardOpen}
