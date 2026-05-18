@@ -1,0 +1,191 @@
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--mainColor1);
+  color: var(--mainColor2);
+}
+
+footer {
+  font-size: 0.8rem;
+  font-weight: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: var(--mainColor1);
+  color: var(--mainColor2);
+}
+
+footer p {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+footer a {
+  color: var(--mainColor2);
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 5px;
+  transition: all 0.3s ease;  
+  &:hover {
+    color: var(--mainColor3);
+    scale: 1.05;
+  }
+}
+
+
+.logo {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  height: 100px;
+
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+Nav button {
+  margin-right: 20px;
+  color: var(--mainColor2);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 500;
+  background: none;
+}
+Nav button:hover {
+  color: var(--mainColor3);
+}
+
+.userButton {
+  margin-right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--mainColor2);
+  font-size: 32px;
+}
+.userButton:hover {
+  color: var(--mainColor3);
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 100%;
+  background-color: var(--fixedColor);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  z-index: 1000;
+}
+.sidebarOverlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.sidebarSpan{
+  color: var(--fixedColor2);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.sidebarButton{
+  padding: 10px;
+  margin-top: 15px;
+  width: 150px;
+  border-radius: 8px;
+  background: var(--mainColor3);
+  color: var(--fixedColor);
+  border: none;
+}
+.sidebarButton.Close{
+  background: none;
+  color: var(--mainColor4);
+}
+
+
+@media (max-width: 710px) {
+
+  .logo {
+    margin-left: 10px;
+
+  }
+
+  nav {
+  display: none;
+  }
+
+
+  
+}
+
+
+
+@media (max-width: 550px) {
+
+  .logo {
+    margin-left: 1px;
+
+  }
+
+  .welcome{
+      flex-direction: column;
+      min-width: 120px;
+      margin-left: -20px;
+
+
+  }
+
+
+
+  userButton {
+    margin-right: 40px;
+
+  }
+  nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+    width: 100px;
+    min-width: 100px;
+    margin-left: 10px;
+  }
+
+  Nav button {
+    font-size: 16px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+}

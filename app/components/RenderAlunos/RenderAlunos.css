@@ -1,0 +1,142 @@
+.componentFilter {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.componentFilter h4 {
+  color: var(--fixedColor);
+}
+
+.componentFilter button {
+  background-color: var(--mainColor3);
+  color: var(--fixedColor);
+  margin-left: 20px;
+  width: 120px;
+  border-radius: 10px;
+  box-shadow: var(--mainShadowEase);
+  font-size: 16px;
+}
+
+.componentFilter button:hover {
+  box-shadow: var(--mainShadow);
+}
+
+.userCard,
+.addNewUserCard {
+  width: 358px;
+  min-height: 350px;
+  border-radius: 10px;
+  background-color: var(--mainColor1);
+  box-shadow: var(--mainShadowEase);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  transition: 0.5s ease;
+}
+.addNewUserCard {
+  font-size: 140px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--mainColor3);
+}
+.addNewUserCard:hover {
+  color: var(--mainColor3);
+  box-shadow: var(--mainShadow);
+}
+.userCard:hover {
+  transform: scale(1.05);
+  box-shadow: var(--mainShadow);
+  transition: 0.5s ease;
+}
+
+.actionButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.Wpp {
+  color: var(--mainColor3);
+}
+
+.actionButtons button {
+  background-color: transparent;
+  margin-left: 15px;
+  scale: 1.2;
+}
+
+.cardLabel {
+  display: flex;
+  height: 50px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cardLabel span {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+.cardLabel span.green {
+  color: var(--confirmado);
+}
+
+.cardLabel input {
+  width: 100%;
+  height: 30px;
+  margin-left: 10px;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.cardLabel select {
+  width: 100%;
+  height: 30px;
+  margin-left: 10px;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: white;
+  color: var(--mainColor3);
+}
+
+.calendarInput {
+  max-width: 120px;
+}
+
+.cardLabel button {
+  border-radius: 10px;
+  width: 40px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.selected {
+  background-color: var(--mainColor3);
+}
+
+.notSelected {
+  background-color: var(--mainColor4);
+}
+
+@media (max-width: 410px) {
+  .userCard,
+  .addNewUserCard {
+    min-width: 280px;
+  }
+}
